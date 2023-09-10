@@ -1,4 +1,4 @@
-const button = document.querySelector("$js-button-alert");
+const button = document.querySelector("#js-button-alert");
 button.addEventListener("click", function () {
-  window.alert("ボタンがクリックされました");
+	window.alert("ボタンがクリックされました");
 });
