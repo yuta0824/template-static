@@ -1,5 +1,29 @@
 @charset "UTF-8";
 
+// foundation
+//--------------------------
+@use "foundation";
+
+// layout
+//--------------------------
+@use "layout";
+
 // component
-// --------------------------
-@use "./component/**/*.scss";
+//--------------------------
+@use "component";
+
+// project
+//--------------------------
+@use "project";
+
+// library
+//--------------------------
+@use "library";
+
+// utility
+//--------------------------
+@use "utility";
+
+// WordPress
+//--------------------------
+@use "wp";

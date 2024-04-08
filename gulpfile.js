@@ -1,23 +1,48 @@
 const { src, dest, series, watch, parallel } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
+const fs = require("fs");
 const gcmq = require("gulp-group-css-media-queries");
 const notify = require("gulp-notify");
 const plumber = require("gulp-plumber");
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const cssdeclsort = require("css-declaration-sorter");
-const sassGlob = require("gulp-sass-glob-use-forward");
-const webp = require("gulp-webp");
-const del = require("del");
-const browserSync = require("browser-sync");
 
 // パスの定義
 const distBase = "./dist";
-const srcSass = "./scss/**/*.scss";
-const srcImg = "./img/**";
 const distCss = `${distBase}/assets/css`;
-const distImg = `${distBase}/assets/img`;
-const distFile = `${distBase}/**/*`;
+const srcSass = "./scss/**/*.scss";
+const srcSassFolderBase = "./scss/";
+const srcSassFolders = [
+	"component",
+	"layout",
+	"project",
+	"library",
+	"utility",
+	"wp",
+];
+
+// SCSSファイルに@useを追加する関数
+const updateIndexWithUse = (done) => {
+	srcSassFolders.forEach((folder) => {
+		const dir = `${srcSassFolderBase}${folder}`;
+		// _index.scssを除外する条件を追加
+		const files = fs
+			.readdirSync(dir)
+			.filter(
+				(file) =>
+					file.startsWith("_") &&
+					file.endsWith(".scss") &&
+					file !== "_index.scss"
+			);
+
+		let importContent = files
+			.map((file) => `@use "${folder}/${file.replace(".scss", "")}";`)
+			.join("\n");
+		fs.writeFileSync(`${dir}/_index.scss`, importContent);
+	});
+	done();
+};
 
 // Sassコンパイル
 const compileSass = (done) => {
@@ -27,7 +52,6 @@ const compileSass = (done) => {
 				errorHandler: notify.onError("Error:<%= error.message %>"),
 			})
 		)
-		.pipe(sassGlob())
 		.pipe(sass())
 		.pipe(postcss([autoprefixer()]))
 		.pipe(
@@ -42,52 +66,11 @@ const compileSass = (done) => {
 	done();
 };
 
-// ローカルサーバー
-const browserSyncFunc = (done) => {
-	browserSync.init({
-		server: { baseDir: distBase },
-	});
-	done();
-};
-
-const browserSyncReload = (done) => {
-	browserSync.reload();
-	done();
-};
-
 // 変更の監視
-const watchFiles = (done) => {
-	watch(srcSass, series(compileSass, browserSyncReload));
-	watch(srcImg, series(clean, copyImages, browserSyncReload));
-	watch(distFile, browserSyncReload);
-	done();
+const watchFiles = () => {
+	const watchPattern = [srcSass, `!${srcSassFolderBase}**/_index.scss`];
+	watch(watchPattern, series(updateIndexWithUse, compileSass));
 };
 
-// 画像ファイルリセット
-const clean = () => {
-	return del(distImg, {
-		force: true,
-	});
-};
-
-// 画像をコピー
-const copyImages = (done) => {
-	src(srcImg).pipe(dest(distImg));
-	done();
-};
-
-//webP変換
-function imageWebp() {
-	return src([`${srcImg}/**.png`, `${srcImg}/**.jpg`, `${srcImg}/**.jpeg`])
-		.pipe(
-			webp({
-				quality: 90,
-				method: 6,
-			})
-		)
-		.pipe(dest(`${distImg}`));
-}
-
-// タスク実行
-exports.webp = imageWebp;
-exports.default = series(watchFiles, browserSyncFunc);
+// Gulpタスクを公開
+exports.default = series(compileSass, watchFiles);
