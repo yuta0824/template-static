@@ -1,3 +1,4 @@
+// Gulp及び必要なプラグインの読み込み
 const { src, dest, series, watch, parallel } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const fs = require("fs");
@@ -18,6 +19,7 @@ const srcImg = "./src/img/**";
 const srcSass = "./src/scss/**/*.scss";
 const srcSassFolderBase = "./src/scss/";
 const srcSassFolders = [
+	// _index.scssに@useでまとめたいフォルダを指定
 	"component",
 	"layout",
 	"project",
@@ -26,11 +28,13 @@ const srcSassFolders = [
 	"wp",
 ];
 
-// SCSSファイルに@useを追加する関数
+/**
+ * _index.scssファイルに@useを追加する関数。指定されたフォルダ内の_scssファイルを
+ * _index.scssに@useで読み込みます。
+ */
 const updateIndexWithUse = (done) => {
 	srcSassFolders.forEach((folder) => {
 		const dir = `${srcSassFolderBase}${folder}`;
-		// _index.scssを除外する条件を追加
 		const files = fs
 			.readdirSync(dir)
 			.filter(
@@ -48,7 +52,11 @@ const updateIndexWithUse = (done) => {
 	done();
 };
 
-// Sassコンパイル
+/**
+ * Sassファイルをコンパイルする関数。SassファイルをCSSにコンパイルし、
+ * 自動的にベンダープレフィックスを追加、メディアクエリをグループ化し、
+ * CSSプロパティをアルファベット順にソートします。
+ */
 const compileSass = (done) => {
 	src(srcSass)
 		.pipe(
@@ -70,13 +78,19 @@ const compileSass = (done) => {
 	done();
 };
 
-// 変更の監視
+/**
+ * ファイル変更を監視し、変更があった場合にタスクを実行する関数。
+ * scssファイルの変更を監視し、必要に応じてコンパイルします。
+ */
 const watchFiles = () => {
 	const watchPattern = [srcSass, `!${srcSassFolderBase}**/_index.scss`];
 	watch(watchPattern, series(updateIndexWithUse, compileSass));
 };
 
-// 画像圧縮
+/**
+ * 画像ファイルをTinyPNGを使用して圧縮する関数。
+ * PNG、JPG、JPEG形式の画像ファイルを対象に圧縮を行い、出力ディレクトリに保存します。
+ */
 const tinypngApi = "xxxxxxxxxxxxxxx"; // TinyPNGのAPI Key
 const imageMiniTinypng = () => {
 	return src([`${srcImg}/**.png`, `${srcImg}/**.jpg`, `${srcImg}/**.jpeg`])
@@ -88,8 +102,12 @@ const imageMiniTinypng = () => {
 		.pipe(dest(distImg));
 };
 
-//画像圧縮とwebP変換
+/**
+ * 画像ファイルをTinyPNGで圧縮した後、WebP形式に変換する関数。
+ * 圧縮と変換を組み合わせることで、サイズの削減とパフォーマンスの向上を図ります。
+ */
 const imageMiniWebpTinypng = () => {
+	const webpQuality = 90; // WebPの圧縮率（0〜100）
 	return src([`${srcImg}/**.png`, `${srcImg}/**.jpg`, `${srcImg}/**.jpeg`])
 		.pipe(
 			tinypng({
@@ -102,11 +120,10 @@ const imageMiniWebpTinypng = () => {
 				method: 6,
 			})
 		)
-
 		.pipe(dest(distImg));
 };
 
-// Gulpタスクを公開
-exports.imgmin = imageMiniTinypng;
-exports.webp = imageMiniWebpTinypng;
-exports.default = series(compileSass, watchFiles);
+// Gulpの公開タスク
+exports.imgmin = imageMiniTinypng; // 画像圧縮タスク
+exports.webp = imageMiniWebpTinypng; // WebP変換タスク
+exports.default = series(compileSass, watchFiles); // デフォルトタスク

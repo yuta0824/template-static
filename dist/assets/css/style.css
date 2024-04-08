@@ -474,8 +474,28 @@ form input::-webkit-credentials-auto-fill-button {
   visibility: hidden;
 }
 
-h1 {
-  color: red;
+.l-inner {
+  margin-inline: auto;
+  padding-inline: 20px;
+  max-width: 1200px;
+}
+
+.c-button {
+  border: 1px solid #000;
+  display: inline-block;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.p-news {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.u-hidden-sp {
+  display: none;
 }
 
 @media (min-width: 768px) {
