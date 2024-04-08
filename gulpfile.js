@@ -77,7 +77,7 @@ const watchFiles = () => {
 };
 
 // 画像圧縮
-const tinypngApi = "ZCmRF2XrKylk8XXWl93dSvzSNfMjctv8"; // TinyPNGのAPI Key
+const tinypngApi = "xxxxxxxxxxxxxxx"; // TinyPNGのAPI Key
 const imageMiniTinypng = () => {
 	return src([`${srcImg}/**.png`, `${srcImg}/**.jpg`, `${srcImg}/**.jpeg`])
 		.pipe(
