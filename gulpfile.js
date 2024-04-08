@@ -7,12 +7,16 @@ const plumber = require("gulp-plumber");
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const cssdeclsort = require("css-declaration-sorter");
+const webp = require("gulp-webp");
+const tinypng = require("gulp-tinypng-compress");
 
 // パスの定義
 const distBase = "./dist";
 const distCss = `${distBase}/assets/css`;
-const srcSass = "./scss/**/*.scss";
-const srcSassFolderBase = "./scss/";
+const distImg = `${distBase}/assets/img`;
+const srcImg = "./src/img/**";
+const srcSass = "./src/scss/**/*.scss";
+const srcSassFolderBase = "./src/scss/";
 const srcSassFolders = [
 	"component",
 	"layout",
@@ -72,5 +76,37 @@ const watchFiles = () => {
 	watch(watchPattern, series(updateIndexWithUse, compileSass));
 };
 
+// 画像圧縮
+const tinypngApi = "ZCmRF2XrKylk8XXWl93dSvzSNfMjctv8"; // TinyPNGのAPI Key
+const imageMiniTinypng = () => {
+	return src([`${srcImg}/**.png`, `${srcImg}/**.jpg`, `${srcImg}/**.jpeg`])
+		.pipe(
+			tinypng({
+				key: tinypngApi,
+			})
+		)
+		.pipe(dest(distImg));
+};
+
+//画像圧縮とwebP変換
+const imageMiniWebpTinypng = () => {
+	return src([`${srcImg}/**.png`, `${srcImg}/**.jpg`, `${srcImg}/**.jpeg`])
+		.pipe(
+			tinypng({
+				key: tinypngApi,
+			})
+		)
+		.pipe(
+			webp({
+				quality: webpQuality,
+				method: 6,
+			})
+		)
+
+		.pipe(dest(distImg));
+};
+
 // Gulpタスクを公開
+exports.imgmin = imageMiniTinypng;
+exports.webp = imageMiniWebpTinypng;
 exports.default = series(compileSass, watchFiles);
