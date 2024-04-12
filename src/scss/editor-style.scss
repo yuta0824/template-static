@@ -1,0 +1,10 @@
+@use "./global" as g;
+
+.wp-block {
+	font-family: g.$ff-base;
+	color: g.$cr-black;
+	line-height: g.$lh-base;
+	letter-spacing: g.$ls-base;
+}
+
+@include g.entry-content();

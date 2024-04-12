@@ -1,0 +1,222 @@
+@use "sass:math";
+@use "../global" as g;
+
+// フォームCSS
+//--------------------------
+form {
+	margin: 0;
+	padding: 0;
+
+	//ボタン
+	button,
+	[type="submit"],
+	[type="button"] {
+		width: 100%;
+		display: inline-block;
+		margin: 0;
+		background-image: none;
+		text-decoration: none;
+		cursor: pointer;
+		appearance: none;
+
+		&:focus {
+			box-shadow: none;
+		}
+
+		::-moz-focus-inner {
+			padding: 0;
+			border: none;
+		}
+	}
+
+	//テキスト,メール,セレクト,テキストエリア
+	[type="text"],
+	[type="search"],
+	[type="tel"],
+	[type="url"],
+	[type="email"],
+	[type="password"],
+	[type="date"],
+	select,
+	textarea {
+		width: 100%;
+		padding: 1em;
+		border: 1px solid g.$cr-form-bd;
+		border-radius: 5px;
+		background-color: g.$cr-form-bg;
+		background-image: none;
+		appearance: none;
+		font-size: g.rem(16);
+		font-weight: g.$fw-base;
+		letter-spacing: g.$ls-base;
+		color: g.$cr-black;
+		line-height: g.$lh-base;
+
+		@include g.mq("md") {
+			font-size: g.rem(18);
+		}
+
+		&::placeholder {
+			color: g.$cr-gray-dark;
+			font-size: g.rem(16);
+		}
+
+		&:focus {
+			border-color: g.$cr-form-bd-active;
+			outline: 2px solid g.$cr-form-bd-active;
+		}
+
+		&[aria-invalid="true"] {
+			border: 1px solid g.$cr-error;
+		}
+	}
+
+	//ラジオボタン
+	[type="radio"] {
+		opacity: 0;
+		position: absolute;
+
+		&:focus-visible + span {
+			&::before {
+				box-shadow: 0 0 5px g.$cr-form-bd-active;
+				border-color: g.$cr-form-bd-active;
+			}
+		}
+
+		+ span {
+			font-size: g.rem(16);
+			color: g.$cr-black;
+			line-height: 1.5;
+			display: inline-block;
+			position: relative;
+			padding: 0 0 0 g.$size-radio-pd-left;
+			margin: 0 32px 10px 0;
+			cursor: pointer;
+
+			&::before {
+				position: absolute;
+				content: "";
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				background: g.$cr-white;
+				border: 1px solid g.$cr-radio;
+				border-radius: 50%;
+				width: g.$size-radio;
+				height: g.$size-radio;
+				display: block;
+			}
+
+			&::after {
+				position: absolute;
+				content: "";
+				top: 50%;
+				left: math.div((g.$size-radio - g.$size-radio-active), 2);
+				transform: translateY(-50%);
+				background: g.$cr-radio-active;
+				border-radius: 50%;
+				width: g.$size-radio-active;
+				height: g.$size-radio-active;
+				display: block;
+				opacity: 0;
+				transition: opacity 0.3s ease 0s;
+			}
+		}
+
+		&:checked + span {
+			&::after {
+				opacity: 1;
+			}
+		}
+	}
+
+	//チェックボックス
+	[type="checkbox"] {
+		opacity: 0;
+		position: absolute;
+
+		&:focus-visible + span {
+			&::before {
+				border: 2px solid g.$cr-form-bd-active;
+			}
+		}
+		+ span {
+			display: inline-block;
+			position: relative;
+			padding: 0 0 0 g.$size-checkbox-pd-left;
+			margin: 0 32px 10px 0;
+			font-size: g.rem(16);
+			line-height: 1;
+			cursor: pointer;
+
+			&::before {
+				position: absolute;
+				content: "";
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				background: g.$cr-white;
+				border: 1px solid g.$cr-checkbox;
+				width: g.$size-checkbox;
+				height: g.$size-checkbox;
+				display: block;
+			}
+
+			&::after {
+				opacity: 0;
+			}
+		}
+
+		&:checked + span {
+			&::after {
+				position: absolute;
+				content: "";
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%) rotate(-45deg);
+				width: g.$size-checkbox;
+				height: (g.$size-checkbox * 0.5);
+				margin-top: -0.2em;
+				display: block;
+				border-left: 3px solid g.$cr-check-active;
+				border-bottom: 3px solid g.$cr-check-active;
+				opacity: 1;
+			}
+		}
+	}
+
+	//セレクト
+	select {
+		color: g.$cr-black;
+		font-size: g.rem(16);
+		background-image: url(../img/common/triangle.svg);
+		background-position: right 16px center;
+		background-repeat: no-repeat;
+		background-size: 20px;
+		padding: 13px 20px;
+		cursor: pointer;
+
+		&::-ms-expand {
+			display: none;
+		}
+
+		&:focus {
+			outline: none;
+			box-shadow: none;
+			border-color: g.$cr-form-bd-active;
+		}
+	}
+
+	input[type="file"] {
+		display: none !important;
+	}
+
+	//safariオートコンプリート無効
+	input::-webkit-contacts-auto-fill-button,
+	input::-webkit-credentials-auto-fill-button {
+		visibility: hidden;
+		pointer-events: none;
+		position: absolute;
+		right: 0;
+	}
+}

@@ -1,0 +1,294 @@
+.wp-block {
+  color: #333333;
+  font-family: "nsjp", sans-serif;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+
+p {
+  color: #333333;
+  font-family: "nsjp", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 2;
+  margin-bottom: 0.8em;
+  margin-top: 1.2em;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.8em;
+  margin-top: 1.2em;
+}
+
+h2 {
+  border-bottom: 1px solid #bcbcbc;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 1em;
+  margin-top: 3em;
+  padding-bottom: 0.3em;
+  padding-top: 0.3em;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+
+h4,
+h5,
+h6 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.5em;
+  margin-top: 2em;
+}
+
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p {
+  margin-top: 0;
+}
+
+hr {
+  border-bottom: none;
+  border-top: 1px solid #bcbcbc;
+  margin-bottom: 22px;
+  margin-top: 22px;
+}
+
+ul {
+  list-style-type: disc;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+  padding-left: 1.5em;
+}
+
+ul li::marker {
+  color: #656565;
+}
+
+ul ul,
+ul ol {
+  margin: 0;
+}
+
+ul ul {
+  list-style-type: circle;
+}
+
+ul ul ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: decimal;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+  padding-left: 1.5em;
+}
+
+ol ul,
+ol ol {
+  margin: 0;
+}
+
+li {
+  line-height: 1.8;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+figure {
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+
+blockquote {
+  background: #bcbcbc;
+  border-left: 4px solid #656565;
+  line-height: 1.8;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+  padding: 1em;
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+blockquote p {
+  margin-top: 1em;
+}
+
+blockquote cite {
+  display: block;
+  font-style: normal;
+  text-align: right;
+}
+
+q {
+  background: #eee;
+  display: inline-block;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  vertical-align: middle;
+}
+
+strong,
+em,
+b {
+  font-style: normal;
+  font-weight: 700;
+}
+
+a {
+  color: #437bba;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+table {
+  border: none;
+}
+
+th {
+  background: #f5f5f5;
+}
+
+th,
+td {
+  border: 1px solid #bcbcbc !important;
+  padding: 15px 10px;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  background: linear-gradient(to bottom, transparent 50%, rgba(107, 137, 255, 0.2588235294) 100%);
+  font-weight: 700;
+}
+
+code:not(pre code) {
+  background-color: #f5f5f5;
+  border: 1px solid #bcbcbc;
+  border-radius: 0.2em;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 0.9em;
+  font-weight: 700;
+  letter-spacing: normal;
+  line-height: 1;
+  margin: 0 0.1em;
+  padding: 0.2em 0.3em;
+}
+
+video,
+img {
+  max-width: 100%;
+}
+
+iframe {
+  aspect-ratio: 16/12;
+  display: block;
+  width: 100%;
+}
+
+.wp-block-lazyblock-example-block {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.wp-block-lazyblock-youtube {
+  margin-bottom: 14px;
+  margin-top: 14px;
+}
+
+.wp-block-group {
+  background: #e7efef;
+  border-radius: 12px;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+@media (min-width: 576px) {
+  iframe {
+    aspect-ratio: 16/9;
+  }
+}
+
+@media (min-width: 768px) {
+  hr {
+    margin-bottom: 46px;
+    margin-top: 46px;
+  }
+
+  a[href*="tel:"] {
+    border: none;
+    color: inherit;
+    pointer-events: none;
+    text-decoration: none;
+  }
+
+  th,
+  td {
+    padding: 20px;
+  }
+
+  .wp-block-lazyblock-example-block {
+    margin-bottom: 42px;
+    margin-top: 42px;
+  }
+
+  .wp-block-lazyblock-youtube {
+    margin-bottom: 24px;
+    margin-top: 24px;
+  }
+
+  .wp-block-group {
+    margin-top: 40px;
+    padding: 32px 34px;
+  }
+}
+
+@media (min-width: 1000px) {
+  p {
+    font-size: 1.0625rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: 1.125rem;
+  }
+}
