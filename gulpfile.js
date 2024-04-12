@@ -45,7 +45,7 @@ const updateIndexWithUse = (done) => {
 			);
 
 		let importContent = files
-			.map((file) => `@use "${file.replace(".scss", "")}";`)
+			.map((file) => `@use "${file.replace(/^_/, "").replace(".scss", "")}";`)
 			.join("\n");
 		fs.writeFileSync(`${dir}/_index.scss`, importContent);
 	});
