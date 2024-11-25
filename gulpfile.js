@@ -21,11 +21,11 @@ const srcSassFolderBase = "./src/scss/";
 const srcSassFolders = [
 	// _index.scssに@useでまとめたいフォルダを指定
 	"component",
-	"layout",
-	"project",
-	"library",
-	"utility",
-	"wp",
+	// "layout",
+	// "project",
+	// "library",
+	// "utility",
+	// "wp",
 ];
 
 /**
