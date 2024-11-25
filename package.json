@@ -9,6 +9,7 @@
 		"stylelint": "npx stylelint \"**/*.scss\" --fix",
 		"eslint": "npx eslint \"**/*.{js,jsx}\" --fix",
 		"lint:html": "markuplint \"**/*.html\"",
+		"lint:php": "markuplint \"**/*.php\"",
 		"prettier": "npx prettier --write \"**/*.{js,jsx,css,scss,html}\"",
 		"lint": "npm run stylelint && npm run eslint",
 		"format": "npm run lint && npm run prettier"
