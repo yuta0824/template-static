@@ -100,7 +100,10 @@ const compileSass = (done) => {
  */
 const watchFiles = () => {
 	const watchPattern = [srcSass, `!${srcSassFolderBase}**/_index.scss`];
-	watch(watchPattern, series(updateIndexWithUse, compileSass));
+	watch(
+		watchPattern,
+		series(updateIndexWithUse, compileSass, browserSyncReload)
+	);
 };
 
 /**
@@ -143,6 +146,6 @@ const imageMiniWebpTinypng = () => {
 exports.imgmin = imageMiniTinypng; // 画像圧縮タスク
 exports.webp = imageMiniWebpTinypng; // WebP変換タスク
 exports.default = series(
-  compileSass,
-  parallel(browserSyncServe, watchFiles) // 変更
+	compileSass,
+	parallel(browserSyncServe, watchFiles) // 変更
 );
