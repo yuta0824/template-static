@@ -10,6 +10,7 @@ const autoprefixer = require("autoprefixer");
 const cssdeclsort = require("css-declaration-sorter");
 const webp = require("gulp-webp");
 const tinypng = require("gulp-tinypng-compress");
+const browserSync = require("browser-sync").create();
 
 // パスの定義
 const distBase = "./dist";
@@ -27,6 +28,21 @@ const srcSassFolders = [
 	// "utility",
 	// "wp",
 ];
+
+// ブラウザリロードのタスクを定義
+function browserSyncServe(done) {
+	browserSync.init({
+		server: {
+			baseDir: distBase,
+		},
+	});
+	done();
+}
+
+function browserSyncReload(done) {
+	browserSync.reload();
+	done();
+}
 
 /**
  * _index.scssファイルに@useを追加する関数。指定されたフォルダ内の_scssファイルを
@@ -126,4 +142,7 @@ const imageMiniWebpTinypng = () => {
 // Gulpの公開タスク
 exports.imgmin = imageMiniTinypng; // 画像圧縮タスク
 exports.webp = imageMiniWebpTinypng; // WebP変換タスク
-exports.default = series(compileSass, watchFiles); // デフォルトタスク
+exports.default = series(
+  compileSass,
+  parallel(browserSyncServe, watchFiles) // 変更
+);
