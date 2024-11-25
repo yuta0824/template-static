@@ -1,38 +1,38 @@
 .c-btn {
-  color: blue;
-  font-size: 10px;
+	color: blue;
+	font-size: 10px;
 }
 
 .test {
-  color: blue;
+	color: blue;
 }
 
 ::-moz-placeholder {
-  color: gray;
+	color: gray;
 }
 
 ::placeholder {
-  color: gray;
+	color: gray;
 }
 
 .css-declaration-sorter {
-  align-self: center;
-  bottom: 10px;
-  color: red;
+	align-self: center;
+	bottom: 10px;
+	color: red;
 }
 
 @media screen and (width >= 768px) {
-  .c-btn {
-    color: red;
-  }
+	.c-btn {
+		color: red;
+	}
 
-  .test {
-    color: red;
-  }
+	.test {
+		color: red;
+	}
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-  .image {
-    background-image: url("image@2x.png");
-  }
+	.image {
+		background-image: url('image@2x.png');
+	}
 }

@@ -1,7 +1,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html,
@@ -27,12 +27,12 @@ table,
 tr,
 th,
 td {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: normal;
-  font-size: 100%;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: normal;
+	font-size: 100%;
+	vertical-align: baseline;
 }
 
 header,
@@ -44,39 +44,39 @@ main,
 aside,
 figure,
 figcaption {
-  display: block;
+	display: block;
 }
 
 ol,
 ul {
-  list-style: none;
+	list-style: none;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 button {
-  margin: 0;
-  padding: 0;
-  border: none;
-  box-shadow: none;
-  background: transparent;
-  cursor: pointer;
-  font: inherit;
+	margin: 0;
+	padding: 0;
+	border: none;
+	box-shadow: none;
+	background: transparent;
+	cursor: pointer;
+	font: inherit;
 }
 
 input,
 select,
 textarea {
-  font: inherit;
-  color: inherit;
-  vertical-align: top;
+	font: inherit;
+	color: inherit;
+	vertical-align: top;
 }
