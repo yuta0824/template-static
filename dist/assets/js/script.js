@@ -1,4 +1,4 @@
-element?.addEventListener("click",(e)=>{
-e.preventDefault()
-alert("Hello, World!")
+element?.addEventListener("click", (e) => {
+  e.preventDefault();
+  alert("Hello, World!");
 });
