@@ -1,4 +1,4 @@
-// /* eslint-disable no-undef */
+/* eslint-disable no-undef */
 // Gulp及び必要なプラグインの読み込み
 const { src, dest, series, watch, parallel } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
