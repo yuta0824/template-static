@@ -82,13 +82,13 @@ const compileSass = (done) => {
 		)
 		.pipe(sass())
 		.pipe(postcss([autoprefixer()]))
-		.pipe(
-			postcss([
-				cssdeclsort({
-					order: 'alphabetical',
-				}),
-			])
-		)
+		// .pipe(
+		// 	postcss([
+		// 		cssdeclsort({
+		// 			order: 'alphabetical',
+		// 		}),
+		// 	])
+		// )
 		.pipe(gcmq())
 		.pipe(dest(distCss));
 	done();

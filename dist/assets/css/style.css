@@ -1,38 +1,43 @@
-.c-btn {
-	color: blue;
-	font-size: 10px;
+.hoge {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 20px;
+  color: red;
 }
 
-.test {
-	color: blue;
+.huga {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 20px;
+  color: red;
 }
 
-::-moz-placeholder {
-	color: gray;
+.huga {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 20px;
+  color: red;
 }
 
-::placeholder {
-	color: gray;
-}
+@media (width >= 768px) {
+  .hoge {
+    width: 200px;
+    height: 40px;
+    color: blue;
+  }
 
-.css-declaration-sorter {
-	align-self: center;
-	bottom: 10px;
-	color: red;
-}
+  .huga {
+    width: 200px;
+    height: 40px;
+    color: blue;
+  }
 
-@media screen and (width >= 768px) {
-	.c-btn {
-		color: red;
-	}
-
-	.test {
-		color: red;
-	}
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-	.image {
-		background-image: url('image@2x.png');
-	}
+  .huga {
+    width: 200px;
+    height: 40px;
+    color: blue;
+  }
 }

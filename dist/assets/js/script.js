@@ -1,4 +1,4 @@
-const button = document.querySelector('#js-button-alert');
-button.addEventListener('click', function () {
-	window.alert('ボタンがクリックされました');
+element?.addEventListener("click",(e)=>{
+e.preventDefault()
+alert("Hello, World!")
 });

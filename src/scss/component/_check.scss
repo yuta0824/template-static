@@ -1,40 +1,27 @@
-// 開発時に削除してください。
-// ---------------------
-
-// パーシャルファイルのGlobeの動作確認
-.c-btn {
-	font-size: 10px;
-	color: blue;
-
-	@media screen and (width >= 768px) {
-		color: red;
-	}
-}
-
-.test {
-	color: blue;
-
-	@media screen and (width >= 768px) {
-		color: red;
-	}
-}
-
-// Autoprefixerの動作確認
-// https://github.com/postcss/autoprefixer/blob/main/README.md
-::placeholder {
-	color: gray;
-}
-
-@media (min-resolution: 2dppx) {
-	.image {
-		background-image: url('image@2x.png');
-	}
-}
-
-// css-declaration-sorterの動作確認
-// https://github.com/Siilwyn/css-declaration-sorter
-.css-declaration-sorter {
-	bottom: 10px;
-	align-self: center;
+.hoge {
+	position: relative;
+	display: block;
+	width: 100px;
+	height: 20px;
 	color: red;
+
+	@media (width >= 768px) {
+		width: 200px;
+		height: 40px;
+		color: blue;
+	}
+}
+
+.huga {
+	position: relative;
+	display: block;
+	width: 100px;
+	height: 20px;
+	color: red;
+
+	@media (width >= 768px) {
+		width: 200px;
+		height: 40px;
+		color: blue;
+	}
 }
