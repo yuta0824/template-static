@@ -14,25 +14,9 @@
   color: red;
 }
 
-.huga {
-  position: relative;
-  display: block;
-  width: 100px;
-  height: 20px;
-  color: red;
-}
-
 @media (width >= 768px) {
   .hoge {
-    width: 200px;
-    height: 40px;
-    color: blue;
-  }
-
-  .huga {
-    width: 200px;
-    height: 40px;
-    color: blue;
+    color: red;
   }
 
   .huga {
