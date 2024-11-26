@@ -20,8 +20,6 @@
     "browser-sync": "^2.29.3",
     "css-declaration-sorter": "^5.1.2",
     "del": "^6.1.1",
-    "eslint": "^9.15.0",
-    "eslint-config-prettier": "^9.1.0",
     "gulp": "^4.0.2",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-notify": "^3.2.0",
