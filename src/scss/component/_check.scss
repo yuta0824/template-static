@@ -1,0 +1,29 @@
+.hoge {
+	position: relative;
+	display: block;
+	width: 100px;
+	height: 20px;
+	color: red;
+
+	@media (width >= 768px) {
+		color: red;
+	}
+
+	@media (width >= 768px) {
+		color: #000;
+	}
+}
+
+.huga {
+	position: relative;
+	display: block;
+	width: 100px;
+	height: 20px;
+	color: red;
+
+	@media (width >= 768px) {
+		width: 200px;
+		height: 40px;
+		color: blue;
+	}
+}
