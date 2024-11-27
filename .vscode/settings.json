@@ -1,30 +1,33 @@
 {
+	// ファイルの自動保存
+	"files.autoSave": "onFocusChange",
+
+	// 保存時にフォーマット
 	"editor.formatOnSave": true,
+
+	// HTMLのフォーマット設定
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"[php]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[jsonc]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[scss]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
+
+	// CSSのフォーマット設定
 	"[css]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
+
+	// scssのフォーマット設定
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// JavaScriptのフォーマット設定
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// stylelint
 	"stylelint.validate": ["css", "scss"],
-	"editor.accessibilitySupport": "off",
 	"editor.codeActionsOnSave": {
 		"source.fixAll.stylelint": "explicit"
-	},
-	"markuplint.targetLanguages": ["html", "php"]
+	}
 }
